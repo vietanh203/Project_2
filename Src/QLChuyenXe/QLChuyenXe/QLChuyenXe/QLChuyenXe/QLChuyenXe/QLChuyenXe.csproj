@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E364E0C3-A455-426C-9963-DCD5BEA19A7B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>QLChuyenXe</RootNamespace>
+    <AssemblyName>QLChuyenXe</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>UIGiaoDien\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>UIGiaoDien\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>UIGiaoDien\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>UIGiaoDien\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\AddPhanCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\AddPhanCong.Designer.cs">
+      <DependentUpon>AddPhanCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\AddBenXe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\AddBenXe.Designer.cs">
+      <DependentUpon>AddBenXe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\AddHangXe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\AddHangXe.Designer.cs">
+      <DependentUpon>AddHangXe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\AddLichTrinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\AddLichTrinh.Designer.cs">
+      <DependentUpon>AddLichTrinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\AddNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\AddNV.Designer.cs">
+      <DependentUpon>AddNV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\AddTuyenDuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\AddTuyenDuong.Designer.cs">
+      <DependentUpon>AddTuyenDuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\AddXe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\AddXe.Designer.cs">
+      <DependentUpon>AddXe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\formDatVe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\formDatVe.Designer.cs">
+      <DependentUpon>formDatVe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QLBanVeXeKhachDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBanVeXeKhachDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QLBanVeXeKhachDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBanVeXeKhachDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QLBanVeXeKhachDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBanVeXeKhachDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="QLBanVeXeKhachDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBanVeXeKhachDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UC\LichKhoiHanh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\LichKhoiHanh.Designer.cs">
+      <DependentUpon>LichKhoiHanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\NhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\NhanVien.Designer.cs">
+      <DependentUpon>NhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC\Schedule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\Schedule.Designer.cs">
+      <DependentUpon>Schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\ThongTinDatve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\ThongTinDatve.Designer.cs">
+      <DependentUpon>ThongTinDatve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\TraCuu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\TraCuu.Designer.cs">
+      <DependentUpon>TraCuu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\LichTrinh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\LichTrinh.Designer.cs">
+      <DependentUpon>LichTrinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\Xe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\Xe.Designer.cs">
+      <DependentUpon>Xe.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\AddPhanCong.resx">
+      <DependentUpon>AddPhanCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\AddBenXe.resx">
+      <DependentUpon>AddBenXe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\AddHangXe.resx">
+      <DependentUpon>AddHangXe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\AddLichTrinh.resx">
+      <DependentUpon>AddLichTrinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\AddNV.resx">
+      <DependentUpon>AddNV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\AddTuyenDuong.resx">
+      <DependentUpon>AddTuyenDuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\AddXe.resx">
+      <DependentUpon>AddXe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\formDatVe.resx">
+      <DependentUpon>formDatVe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\LichKhoiHanh.resx">
+      <DependentUpon>LichKhoiHanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\NhanVien.resx">
+      <DependentUpon>NhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UC\Schedule.resx">
+      <DependentUpon>Schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\ThongTinDatve.resx">
+      <DependentUpon>ThongTinDatve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\TraCuu.resx">
+      <DependentUpon>TraCuu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\LichTrinh.resx">
+      <DependentUpon>LichTrinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\Xe.resx">
+      <DependentUpon>Xe.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="QLBanVeXeKhachDataSet.xsc">
+      <DependentUpon>QLBanVeXeKhachDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLBanVeXeKhachDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBanVeXeKhachDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBanVeXeKhachDataSet.xss">
+      <DependentUpon>QLBanVeXeKhachDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLBanVeXeKhachDataSet1.xsc">
+      <DependentUpon>QLBanVeXeKhachDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="QLBanVeXeKhachDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBanVeXeKhachDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBanVeXeKhachDataSet1.xss">
+      <DependentUpon>QLBanVeXeKhachDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="QLBanVeXeKhachDataSet2.xsc">
+      <DependentUpon>QLBanVeXeKhachDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="QLBanVeXeKhachDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBanVeXeKhachDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBanVeXeKhachDataSet2.xss">
+      <DependentUpon>QLBanVeXeKhachDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="QLBanVeXeKhachDataSet3.xsc">
+      <DependentUpon>QLBanVeXeKhachDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="QLBanVeXeKhachDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBanVeXeKhachDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBanVeXeKhachDataSet3.xss">
+      <DependentUpon>QLBanVeXeKhachDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error_d9Q_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\car.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\car %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\abc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circular-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\online-booking %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\agenda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder-13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\map-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play-button-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bus %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{971B4094-30C0-4EC3-AC83-1C6C67857B41}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataProvider\DataProvider.csproj">
+      <Project>{97e70f6e-788c-4b9b-b5c8-1e45004b7383}</Project>
+      <Name>DataProvider</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo1.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

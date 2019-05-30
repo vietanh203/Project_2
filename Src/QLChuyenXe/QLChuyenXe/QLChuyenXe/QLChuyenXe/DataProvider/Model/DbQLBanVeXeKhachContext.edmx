@@ -1,0 +1,2044 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QLBanVeXeKhachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="IDNhanVien" />
+          </Key>
+          <Property Name="IDNhanVien" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="privilege" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BEN">
+          <Key>
+            <PropertyRef Name="IDBen" />
+          </Key>
+          <Property Name="IDBen" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="TenBen" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CHAY">
+          <Key>
+            <PropertyRef Name="IDTuyenDuong" />
+            <PropertyRef Name="IDXe" />
+          </Key>
+          <Property Name="IDTuyenDuong" Type="int" Nullable="false" />
+          <Property Name="IDXe" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="CHUYENXE">
+          <Key>
+            <PropertyRef Name="IDChuyen" />
+          </Key>
+          <Property Name="IDChuyen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GioKhoiHanh" Type="time" Precision="7" />
+          <Property Name="GiaVe" Type="money" />
+          <Property Name="IDTuyenDuong" Type="int" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="CHUYENXETHUCTE">
+          <Key>
+            <PropertyRef Name="IDChuyenXe" />
+          </Key>
+          <Property Name="IDChuyenXe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDTuyenDuong" Type="int" Nullable="false" />
+          <Property Name="GioKhoiHanh" Type="time" Precision="7" />
+          <Property Name="NgayKhoiHanh" Type="date" />
+          <Property Name="IDXe" Type="int" />
+          <Property Name="IDTaiXe1" Type="int" />
+          <Property Name="IDTaiXe2" Type="int" />
+          <Property Name="SoLuongVe" Type="int" />
+          <Property Name="GiaVe" Type="money" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="DATVE">
+          <Key>
+            <PropertyRef Name="IDDatVe" />
+          </Key>
+          <Property Name="IDDatVe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDKhachhang" Type="int" />
+          <Property Name="NgayDat" Type="datetime" />
+          <Property Name="MaNV" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="NgayDi" Type="date" />
+          <Property Name="IDChuyen" Type="int" />
+        </EntityType>
+        <EntityType Name="DATVE_SOGHE">
+          <Key>
+            <PropertyRef Name="SoGhe" />
+            <PropertyRef Name="IDDatVe" />
+          </Key>
+          <Property Name="SoGhe" Type="int" Nullable="false" />
+          <Property Name="IDDatVe" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="IDKhachHang" />
+          </Key>
+          <Property Name="IDKhachHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenKH" Type="nvarchar" MaxLength="31" Nullable="false" />
+          <Property Name="SDT" Type="varchar" MaxLength="50" />
+          <Property Name="CMND" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LOAIXE">
+          <Key>
+            <PropertyRef Name="MaLoai" />
+          </Key>
+          <Property Name="MaLoai" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="HangXe" Type="nvarchar" MaxLength="20" />
+          <Property Name="SucChua" Type="int" />
+        </EntityType>
+        <EntityType Name="NHANSU">
+          <Key>
+            <PropertyRef Name="IDNhanVien" />
+          </Key>
+          <Property Name="IDNhanVien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="31" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="Cmnd" Type="varchar" MaxLength="12" />
+          <Property Name="QueQuan" Type="nvarchar" MaxLength="256" />
+          <Property Name="IDTuyenDuong" Type="int" />
+          <Property Name="image" Type="image" />
+          <Property Name="loainv" Type="int" />
+        </EntityType>
+        <EntityType Name="SODIENTHOAI">
+          <Key>
+            <PropertyRef Name="IDNhanVien" />
+            <PropertyRef Name="SDT" />
+          </Key>
+          <Property Name="IDNhanVien" Type="int" Nullable="false" />
+          <Property Name="SDT" Type="varchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Temp_DatVe_SoGhe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDDatVe" Type="int" />
+          <Property Name="IDSoGhe" Type="int" />
+        </EntityType>
+        <EntityType Name="TUYENDUONG">
+          <Key>
+            <PropertyRef Name="IDTuyenDuong" />
+          </Key>
+          <Property Name="IDTuyenDuong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiemKhoiHanh" Type="varchar" MaxLength="5" />
+          <Property Name="DiemDen" Type="varchar" MaxLength="5" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="XE">
+          <Key>
+            <PropertyRef Name="IDXe" />
+          </Key>
+          <Property Name="IDXe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BienSo" Type="varchar" MaxLength="15" />
+          <Property Name="MaLoai" Type="varchar" MaxLength="5" />
+          <Property Name="IDBen" Type="varchar" MaxLength="5" />
+          <Property Name="Status" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Account_NHANSU">
+          <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="NHANSU">
+              <PropertyRef Name="IDNhanVien" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="IDNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHAY_TUYENDUONG">
+          <End Role="TUYENDUONG" Type="Self.TUYENDUONG" Multiplicity="1" />
+          <End Role="CHAY" Type="Self.CHAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUYENDUONG">
+              <PropertyRef Name="IDTuyenDuong" />
+            </Principal>
+            <Dependent Role="CHAY">
+              <PropertyRef Name="IDTuyenDuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHAY_XE">
+          <End Role="XE" Type="Self.XE" Multiplicity="1" />
+          <End Role="CHAY" Type="Self.CHAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XE">
+              <PropertyRef Name="IDXe" />
+            </Principal>
+            <Dependent Role="CHAY">
+              <PropertyRef Name="IDXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHUYENXE_TUYENDUONG">
+          <End Role="TUYENDUONG" Type="Self.TUYENDUONG" Multiplicity="0..1" />
+          <End Role="CHUYENXE" Type="Self.CHUYENXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUYENDUONG">
+              <PropertyRef Name="IDTuyenDuong" />
+            </Principal>
+            <Dependent Role="CHUYENXE">
+              <PropertyRef Name="IDTuyenDuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHUYENXETHUCTE_XE">
+          <End Role="XE" Type="Self.XE" Multiplicity="0..1" />
+          <End Role="CHUYENXETHUCTE" Type="Self.CHUYENXETHUCTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XE">
+              <PropertyRef Name="IDXe" />
+            </Principal>
+            <Dependent Role="CHUYENXETHUCTE">
+              <PropertyRef Name="IDXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATVE_CHUYENXETHUCTE">
+          <End Role="CHUYENXETHUCTE" Type="Self.CHUYENXETHUCTE" Multiplicity="0..1" />
+          <End Role="DATVE" Type="Self.DATVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUYENXETHUCTE">
+              <PropertyRef Name="IDChuyenXe" />
+            </Principal>
+            <Dependent Role="DATVE">
+              <PropertyRef Name="IDChuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATVE_KhachHang">
+          <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+          <End Role="DATVE" Type="Self.DATVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="IDKhachHang" />
+            </Principal>
+            <Dependent Role="DATVE">
+              <PropertyRef Name="IDKhachhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATVE_SOGHE_DATVE">
+          <End Role="DATVE" Type="Self.DATVE" Multiplicity="1" />
+          <End Role="DATVE_SOGHE" Type="Self.DATVE_SOGHE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATVE">
+              <PropertyRef Name="IDDatVe" />
+            </Principal>
+            <Dependent Role="DATVE_SOGHE">
+              <PropertyRef Name="IDDatVe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NHANSU_TUYENDUONG">
+          <End Role="TUYENDUONG" Type="Self.TUYENDUONG" Multiplicity="0..1" />
+          <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUYENDUONG">
+              <PropertyRef Name="IDTuyenDuong" />
+            </Principal>
+            <Dependent Role="NHANSU">
+              <PropertyRef Name="IDTuyenDuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SODIENTHOAI_NHANSU">
+          <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="1" />
+          <End Role="SODIENTHOAI" Type="Self.SODIENTHOAI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANSU">
+              <PropertyRef Name="IDNhanVien" />
+            </Principal>
+            <Dependent Role="SODIENTHOAI">
+              <PropertyRef Name="IDNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUYENDUONG_BEN">
+          <End Role="BEN" Type="Self.BEN" Multiplicity="0..1" />
+          <End Role="TUYENDUONG" Type="Self.TUYENDUONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BEN">
+              <PropertyRef Name="IDBen" />
+            </Principal>
+            <Dependent Role="TUYENDUONG">
+              <PropertyRef Name="DiemKhoiHanh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUYENDUONG_BEN1">
+          <End Role="BEN" Type="Self.BEN" Multiplicity="0..1" />
+          <End Role="TUYENDUONG" Type="Self.TUYENDUONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BEN">
+              <PropertyRef Name="IDBen" />
+            </Principal>
+            <Dependent Role="TUYENDUONG">
+              <PropertyRef Name="DiemDen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XE_LOAIXE">
+          <End Role="LOAIXE" Type="Self.LOAIXE" Multiplicity="0..1" />
+          <End Role="XE" Type="Self.XE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIXE">
+              <PropertyRef Name="MaLoai" />
+            </Principal>
+            <Dependent Role="XE">
+              <PropertyRef Name="MaLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="FN_NS_SearchByKeyword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="keyword" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="IDNhanVien" Type="int" Nullable="false" />
+                <Property Name="HoTen" Type="nvarchar" MaxLength="31" />
+                <Property Name="NgaySinh" Type="date" />
+                <Property Name="Cmnd" Type="varchar" MaxLength="12" />
+                <Property Name="QueQuan" Type="nvarchar" MaxLength="256" />
+                <Property Name="IDTuyenDuong" Type="int" />
+                <Property Name="image" Type="image" />
+                <Property Name="loainv" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="sp_DatVe_KhachHang_Transaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TenKhachHang" Type="nvarchar" Mode="In" />
+          <Parameter Name="SDT" Type="varchar" Mode="In" />
+          <Parameter Name="CMND" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="IdCXTT" Type="int" Mode="In" />
+          <Parameter Name="NgayKhoiHanh" Type="date" Mode="In" />
+          <Parameter Name="Ngaydat" Type="datetime" Mode="In" />
+          <Parameter Name="MaNV" Type="int" Mode="In" />
+          <Parameter Name="TrangthaiDatVe" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetALLChuyenXeChuaPhanCong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_GetAllChuyenXeDaPhanCong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_GetChuyenXeByTuyenDuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDTuyenDuong" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_GetChuyenXeThucTeByIDTDuongNgayKhoiHanhGioKhoiHanh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDTuyenDuong" Type="int" Mode="In" />
+          <Parameter Name="NgayKhoiHanh" Type="nchar" Mode="In" />
+          <Parameter Name="SucChua" Type="int" Mode="In" />
+          <Parameter Name="Soluong" Type="int" Mode="In" />
+          <Parameter Name="GioKhoiHanh" Type="time" Mode="In" />
+        </Function>
+        <Function Name="sp_GetTenBenCuaTuyenDuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_GetTuyenDuongByDiemKhoiHanh2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDDiemKhoiHanh" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_LayIDChuyenXeVaIDDatVeVuaThem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TenKhachHang" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ngaydat" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_LaySoGheTren1ChuyenXe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idchuyen" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_LayXeTrongTheoIDBen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBEN" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_SelectAllBenXe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ThemCXTT_DatVe_KhachHang_Transaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDTuyenDuong" Type="int" Mode="In" />
+          <Parameter Name="GioKhoiHanh" Type="time" Mode="In" />
+          <Parameter Name="NgayKhoiHanh" Type="date" Mode="In" />
+          <Parameter Name="IdXe" Type="int" Mode="In" />
+          <Parameter Name="IdTaixe1" Type="int" Mode="In" />
+          <Parameter Name="IdTaixe2" Type="int" Mode="In" />
+          <Parameter Name="GiaVe" Type="money" Mode="In" />
+          <Parameter Name="TrangThaiCXTT" Type="int" Mode="In" />
+          <Parameter Name="TenKhachHang" Type="nvarchar" Mode="In" />
+          <Parameter Name="SDT" Type="varchar" Mode="In" />
+          <Parameter Name="CMND" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Ngaydat" Type="datetime" Mode="In" />
+          <Parameter Name="MaNV" Type="int" Mode="In" />
+          <Parameter Name="TrangthaiDatVe" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ThemDATVE_SOGHE_WITH_IDDATVE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idDatVe" Type="int" Mode="In" />
+          <Parameter Name="idCXTT" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateChuyenXeChuaPhanCong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idxe" Type="int" Mode="In" />
+          <Parameter Name="idtaixe1" Type="int" Mode="In" />
+          <Parameter Name="idtaixe2" Type="int" Mode="In" />
+          <Parameter Name="idChuyenXe" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateTrangThaiChuyenXeDaHoanThanh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idChuyenXe" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDelete_NS1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="manv" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetBen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetBienSoTheoIDXe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idXe" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetCXTT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetDiemDenTheoDiemKhoiHanh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DiemKhoiHanh" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spGetDiemKhoiHanhTheoIDTuyenDuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDTuyenDuong" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetGiaVeTheoIDXe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idXe" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spgetGioKHTheoNgayKH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ngayKH" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spGetIDChuyenTheoIDKH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idKH" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetIDTuyenDuongTheoNgayDi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NgayDi" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spGetIDXeTheoIDTuyenDuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idtd" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetKhachHang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetLoaiXe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetNgayDiTheoIDChuyenIDHK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idChuyen" Type="int" Mode="In" />
+          <Parameter Name="idHK" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetNgayKhoiHanhTheoIDTD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetNSByIDNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idNhanVien" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spgetSoGheTheoIDDatVe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idDV" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetTuyenDuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetUserByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user" Type="varchar" Mode="In" />
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spGetXe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spGetXeTheoIDBenXe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertBen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idben" Type="varchar" Mode="In" />
+          <Parameter Name="tenben" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertChuyenXe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="giokhoihanh" Type="datetime" Mode="In" />
+          <Parameter Name="giave" Type="money" Mode="In" />
+          <Parameter Name="idtuyenduong" Type="int" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spInserts_NS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgaySinh" Type="date" Mode="In" />
+          <Parameter Name="Cmnd" Type="varchar" Mode="In" />
+          <Parameter Name="QueQuan" Type="nvarchar" Mode="In" />
+          <Parameter Name="IDTuyenDuong" Type="int" Mode="In" />
+          <Parameter Name="image" Type="image" Mode="In" />
+          <Parameter Name="loainv" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spInsertTuyenDuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diemkhoihanh" Type="varchar" Mode="In" />
+          <Parameter Name="diemden" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spSearchByStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="loainv" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="IDNhanVien" Type="int" Nullable="false" />
+                <Property Name="HoTen" Type="nvarchar" MaxLength="31" />
+                <Property Name="NgaySinh" Type="date" />
+                <Property Name="Cmnd" Type="varchar" MaxLength="12" />
+                <Property Name="QueQuan" Type="nvarchar" MaxLength="256" />
+                <Property Name="IDTuyenDuong" Type="int" />
+                <Property Name="image" Type="image" />
+                <Property Name="loainv" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="spSearchChuyenXeWithDiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diemkhoihanh" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spSearchNSByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hoTen" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spSelect_NS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spSuaXe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDXe" Type="int" Mode="In" />
+          <Parameter Name="BienSo" Type="varchar" Mode="In" />
+          <Parameter Name="staTus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spThemXe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BienSo" Type="varchar" Mode="In" />
+          <Parameter Name="MaLoai" Type="varchar" Mode="In" />
+          <Parameter Name="IDBen" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdate_NS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDNhanVien" Type="int" Mode="In" />
+          <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgaySinh" Type="date" Mode="In" />
+          <Parameter Name="Cmnd" Type="varchar" Mode="In" />
+          <Parameter Name="QueQuan" Type="nvarchar" Mode="In" />
+          <Parameter Name="IDTuyenDuong" Type="int" Mode="In" />
+          <Parameter Name="image" Type="image" Mode="In" />
+          <Parameter Name="loainv" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUpdateBen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idben" Type="varchar" Mode="In" />
+          <Parameter Name="tenben" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spUpdateChuyenXe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idchuyenxe" Type="int" Mode="In" />
+          <Parameter Name="giokhoihanh" Type="datetime" Mode="In" />
+          <Parameter Name="giave" Type="money" Mode="In" />
+          <Parameter Name="idtuyenduong" Type="int" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spUpdateTuyenDuong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idtuyenduong" Type="int" Mode="In" />
+          <Parameter Name="diemkhoihanh" Type="varchar" Mode="In" />
+          <Parameter Name="diemden" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spXoaXe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDXe" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="QLBanVeXeKhachModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BEN" EntityType="Self.BEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHAY" EntityType="Self.CHAY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHUYENXE" EntityType="Self.CHUYENXE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHUYENXETHUCTE" EntityType="Self.CHUYENXETHUCTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATVE" EntityType="Self.DATVE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATVE_SOGHE" EntityType="Self.DATVE_SOGHE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAIXE" EntityType="Self.LOAIXE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHANSU" EntityType="Self.NHANSU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SODIENTHOAI" EntityType="Self.SODIENTHOAI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Temp_DatVe_SoGhe" EntityType="Self.Temp_DatVe_SoGhe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TUYENDUONG" EntityType="Self.TUYENDUONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="XE" EntityType="Self.XE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Account_NHANSU" Association="Self.FK_Account_NHANSU">
+            <End Role="NHANSU" EntitySet="NHANSU" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHAY_TUYENDUONG" Association="Self.FK_CHAY_TUYENDUONG">
+            <End Role="TUYENDUONG" EntitySet="TUYENDUONG" />
+            <End Role="CHAY" EntitySet="CHAY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHAY_XE" Association="Self.FK_CHAY_XE">
+            <End Role="XE" EntitySet="XE" />
+            <End Role="CHAY" EntitySet="CHAY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHUYENXE_TUYENDUONG" Association="Self.FK_CHUYENXE_TUYENDUONG">
+            <End Role="TUYENDUONG" EntitySet="TUYENDUONG" />
+            <End Role="CHUYENXE" EntitySet="CHUYENXE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHUYENXETHUCTE_XE" Association="Self.FK_CHUYENXETHUCTE_XE">
+            <End Role="XE" EntitySet="XE" />
+            <End Role="CHUYENXETHUCTE" EntitySet="CHUYENXETHUCTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATVE_CHUYENXETHUCTE" Association="Self.FK_DATVE_CHUYENXETHUCTE">
+            <End Role="CHUYENXETHUCTE" EntitySet="CHUYENXETHUCTE" />
+            <End Role="DATVE" EntitySet="DATVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATVE_KhachHang" Association="Self.FK_DATVE_KhachHang">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="DATVE" EntitySet="DATVE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATVE_SOGHE_DATVE" Association="Self.FK_DATVE_SOGHE_DATVE">
+            <End Role="DATVE" EntitySet="DATVE" />
+            <End Role="DATVE_SOGHE" EntitySet="DATVE_SOGHE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NHANSU_TUYENDUONG" Association="Self.FK_NHANSU_TUYENDUONG">
+            <End Role="TUYENDUONG" EntitySet="TUYENDUONG" />
+            <End Role="NHANSU" EntitySet="NHANSU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SODIENTHOAI_NHANSU" Association="Self.FK_SODIENTHOAI_NHANSU">
+            <End Role="NHANSU" EntitySet="NHANSU" />
+            <End Role="SODIENTHOAI" EntitySet="SODIENTHOAI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUYENDUONG_BEN" Association="Self.FK_TUYENDUONG_BEN">
+            <End Role="BEN" EntitySet="BEN" />
+            <End Role="TUYENDUONG" EntitySet="TUYENDUONG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUYENDUONG_BEN1" Association="Self.FK_TUYENDUONG_BEN1">
+            <End Role="BEN" EntitySet="BEN" />
+            <End Role="TUYENDUONG" EntitySet="TUYENDUONG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XE_LOAIXE" Association="Self.FK_XE_LOAIXE">
+            <End Role="LOAIXE" EntitySet="LOAIXE" />
+            <End Role="XE" EntitySet="XE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLBanVeXeKhachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DbQLBanVeXeKhachContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="QLBanVeXeKhachModel.Account" />
+          <EntitySet Name="BENs" EntityType="QLBanVeXeKhachModel.BEN" />
+          <EntitySet Name="CHAYs" EntityType="QLBanVeXeKhachModel.CHAY" />
+          <EntitySet Name="CHUYENXETHUCTEs" EntityType="QLBanVeXeKhachModel.CHUYENXETHUCTE" />
+          <EntitySet Name="DATVEs" EntityType="QLBanVeXeKhachModel.DATVE" />
+          <EntitySet Name="DATVE_SOGHE" EntityType="QLBanVeXeKhachModel.DATVE_SOGHE" />
+          <EntitySet Name="LOAIXEs" EntityType="QLBanVeXeKhachModel.LOAIXE" />
+          <EntitySet Name="SODIENTHOAIs" EntityType="QLBanVeXeKhachModel.SODIENTHOAI" />
+          <EntitySet Name="TUYENDUONGs" EntityType="QLBanVeXeKhachModel.TUYENDUONG" />
+          <EntitySet Name="XEs" EntityType="QLBanVeXeKhachModel.XE" />
+          <AssociationSet Name="FK_TUYENDUONG_BEN" Association="QLBanVeXeKhachModel.FK_TUYENDUONG_BEN">
+            <End Role="BEN" EntitySet="BENs" />
+            <End Role="TUYENDUONG" EntitySet="TUYENDUONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TUYENDUONG_BEN1" Association="QLBanVeXeKhachModel.FK_TUYENDUONG_BEN1">
+            <End Role="BEN" EntitySet="BENs" />
+            <End Role="TUYENDUONG" EntitySet="TUYENDUONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHAY_TUYENDUONG" Association="QLBanVeXeKhachModel.FK_CHAY_TUYENDUONG">
+            <End Role="TUYENDUONG" EntitySet="TUYENDUONGs" />
+            <End Role="CHAY" EntitySet="CHAYs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHAY_XE" Association="QLBanVeXeKhachModel.FK_CHAY_XE">
+            <End Role="XE" EntitySet="XEs" />
+            <End Role="CHAY" EntitySet="CHAYs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHUYENXETHUCTE_XE" Association="QLBanVeXeKhachModel.FK_CHUYENXETHUCTE_XE">
+            <End Role="XE" EntitySet="XEs" />
+            <End Role="CHUYENXETHUCTE" EntitySet="CHUYENXETHUCTEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATVE_CHUYENXETHUCTE" Association="QLBanVeXeKhachModel.FK_DATVE_CHUYENXETHUCTE">
+            <End Role="CHUYENXETHUCTE" EntitySet="CHUYENXETHUCTEs" />
+            <End Role="DATVE" EntitySet="DATVEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATVE_SOGHE_DATVE" Association="QLBanVeXeKhachModel.FK_DATVE_SOGHE_DATVE">
+            <End Role="DATVE" EntitySet="DATVEs" />
+            <End Role="DATVE_SOGHE" EntitySet="DATVE_SOGHE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_XE_LOAIXE" Association="QLBanVeXeKhachModel.FK_XE_LOAIXE">
+            <End Role="LOAIXE" EntitySet="LOAIXEs" />
+            <End Role="XE" EntitySet="XEs" />
+          </AssociationSet>
+          <FunctionImport Name="sp_SelectAllBenXe" EntitySet="BENs" ReturnType="Collection(QLBanVeXeKhachModel.BEN)" />
+          <FunctionImport Name="sp_GetTuyenDuongByDiemKhoiHanh2" ReturnType="Collection(QLBanVeXeKhachModel.sp_GetTuyenDuongByDiemKhoiHanh2_Result)">
+          <Parameter Name="IDDiemKhoiHanh" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_LaySoGheTren1ChuyenXe" ReturnType="Collection(QLBanVeXeKhachModel.sp_LaySoGheTren1ChuyenXe_Result)">
+          <Parameter Name="idchuyen" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="KhachHangs" EntityType="QLBanVeXeKhachModel.KhachHang" />
+          <AssociationSet Name="FK_DATVE_KhachHang" Association="QLBanVeXeKhachModel.FK_DATVE_KhachHang">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="DATVE" EntitySet="DATVEs" />
+          </AssociationSet>
+          <FunctionImport Name="sp_LayIDChuyenXeVaIDDatVeVuaThem" ReturnType="Collection(QLBanVeXeKhachModel.sp_LayIDChuyenXeVaIDDatVeVuaThem_Result)">
+            <Parameter Name="TenKhachHang" Mode="In" Type="String" />
+            <Parameter Name="Ngaydat" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="Temp_DatVe_SoGhe" EntityType="QLBanVeXeKhachModel.Temp_DatVe_SoGhe" />
+          <FunctionImport Name="sp_ThemDATVE_SOGHE_WITH_IDDATVE" ReturnType="Collection(Int32)">
+            <Parameter Name="idDatVe" Mode="In" Type="Int32" />
+            <Parameter Name="idCXTT" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertBen">
+            <Parameter Name="idben" Mode="In" Type="String" />
+            <Parameter Name="tenben" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateBen">
+            <Parameter Name="idben" Mode="In" Type="String" />
+            <Parameter Name="tenben" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertChuyenXe">
+            <Parameter Name="giokhoihanh" Mode="In" Type="DateTime" />
+            <Parameter Name="giave" Mode="In" Type="Decimal" />
+            <Parameter Name="idtuyenduong" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSearchChuyenXeWithDiem" ReturnType="Collection(QLBanVeXeKhachModel.spSearchChuyenXeWithDiem_Result)">
+          <Parameter Name="diemkhoihanh" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateChuyenXe">
+            <Parameter Name="idchuyenxe" Mode="In" Type="Int32" />
+            <Parameter Name="giokhoihanh" Mode="In" Type="DateTime" />
+            <Parameter Name="giave" Mode="In" Type="Decimal" />
+            <Parameter Name="idtuyenduong" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CHUYENXEs" EntityType="QLBanVeXeKhachModel.CHUYENXE" />
+          <AssociationSet Name="FK_CHUYENXE_TUYENDUONG" Association="QLBanVeXeKhachModel.FK_CHUYENXE_TUYENDUONG">
+            <End Role="TUYENDUONG" EntitySet="TUYENDUONGs" />
+            <End Role="CHUYENXE" EntitySet="CHUYENXEs" />
+          </AssociationSet>
+          <FunctionImport Name="sp_GetChuyenXeByTuyenDuong" EntitySet="CHUYENXEs" ReturnType="Collection(QLBanVeXeKhachModel.CHUYENXE)">
+          <Parameter Name="IDTuyenDuong" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUpdateTuyenDuong">
+            <Parameter Name="idtuyenduong" Mode="In" Type="Int32" />
+            <Parameter Name="diemkhoihanh" Mode="In" Type="String" />
+            <Parameter Name="diemden" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertTuyenDuong">
+            <Parameter Name="diemkhoihanh" Mode="In" Type="String" />
+            <Parameter Name="diemden" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="NHANSUs" EntityType="QLBanVeXeKhachModel.NHANSU" />
+          <AssociationSet Name="FK_Account_NHANSU" Association="QLBanVeXeKhachModel.FK_Account_NHANSU">
+            <End Role="NHANSU" EntitySet="NHANSUs" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NHANSU_TUYENDUONG" Association="QLBanVeXeKhachModel.FK_NHANSU_TUYENDUONG">
+            <End Role="TUYENDUONG" EntitySet="TUYENDUONGs" />
+            <End Role="NHANSU" EntitySet="NHANSUs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SODIENTHOAI_NHANSU" Association="QLBanVeXeKhachModel.FK_SODIENTHOAI_NHANSU">
+            <End Role="NHANSU" EntitySet="NHANSUs" />
+            <End Role="SODIENTHOAI" EntitySet="SODIENTHOAIs" />
+          </AssociationSet>
+          <FunctionImport Name="FN_NS_SearchByKeyword" IsComposable="true" ReturnType="Collection(QLBanVeXeKhachModel.FN_NS_SearchByKeyword_Result)">
+          <Parameter Name="keyword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spDelete_NS1">
+          <Parameter Name="manv" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetNSByIDNhanVien" ReturnType="Collection(QLBanVeXeKhachModel.spGetNSByIDNhanVien_Result)">
+          <Parameter Name="idNhanVien" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetUserByID" ReturnType="Collection(QLBanVeXeKhachModel.spGetUserByID_Result)">
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInserts_NS">
+            <Parameter Name="HoTen" Mode="In" Type="String" />
+            <Parameter Name="NgaySinh" Mode="In" Type="DateTime" />
+            <Parameter Name="Cmnd" Mode="In" Type="String" />
+            <Parameter Name="QueQuan" Mode="In" Type="String" />
+            <Parameter Name="IDTuyenDuong" Mode="In" Type="Int32" />
+            <Parameter Name="image" Mode="In" Type="Binary" />
+            <Parameter Name="loainv" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSearchByStatus" IsComposable="true" ReturnType="Collection(QLBanVeXeKhachModel.spSearchByStatus_Result)">
+          <Parameter Name="loainv" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spSearchNSByName" ReturnType="Collection(QLBanVeXeKhachModel.spSearchNSByName_Result)">
+          <Parameter Name="hoTen" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSelect_NS" ReturnType="Collection(QLBanVeXeKhachModel.spSelect_NS_Result)" />
+          <FunctionImport Name="spUpdate_NS">
+            <Parameter Name="IDNhanVien" Mode="In" Type="Int32" />
+            <Parameter Name="HoTen" Mode="In" Type="String" />
+            <Parameter Name="NgaySinh" Mode="In" Type="DateTime" />
+            <Parameter Name="Cmnd" Mode="In" Type="String" />
+            <Parameter Name="QueQuan" Mode="In" Type="String" />
+            <Parameter Name="IDTuyenDuong" Mode="In" Type="Int32" />
+            <Parameter Name="image" Mode="In" Type="Binary" />
+            <Parameter Name="loainv" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetBen" ReturnType="Collection(QLBanVeXeKhachModel.spGetBen_Result)" />
+          <FunctionImport Name="spGetCXTT" ReturnType="Collection(QLBanVeXeKhachModel.spGetCXTT_Result)" />
+          <FunctionImport Name="spGetDiemDenTheoDiemKhoiHanh" ReturnType="Collection(QLBanVeXeKhachModel.spGetDiemDenTheoDiemKhoiHanh_Result)">
+          <Parameter Name="DiemKhoiHanh" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spGetKhachHang" ReturnType="Collection(QLBanVeXeKhachModel.spGetKhachHang_Result)" />
+          <FunctionImport Name="spGetLoaiXe" ReturnType="Collection(QLBanVeXeKhachModel.spGetLoaiXe_Result)" />
+          <FunctionImport Name="spGetNgayKhoiHanhTheoIDTD" ReturnType="Collection(QLBanVeXeKhachModel.spGetNgayKhoiHanhTheoIDTD_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetTuyenDuong" ReturnType="Collection(QLBanVeXeKhachModel.spGetTuyenDuong_Result)" />
+          <FunctionImport Name="spGetXe" ReturnType="Collection(QLBanVeXeKhachModel.spGetXe_Result)" />
+          <FunctionImport Name="spGetXeTheoIDBenXe" ReturnType="Collection(QLBanVeXeKhachModel.spGetXeTheoIDBenXe_Result)">
+          <Parameter Name="id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spSuaXe">
+            <Parameter Name="IDXe" Mode="In" Type="Int32" />
+            <Parameter Name="BienSo" Mode="In" Type="String" />
+            <Parameter Name="staTus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spThemXe">
+            <Parameter Name="BienSo" Mode="In" Type="String" />
+            <Parameter Name="MaLoai" Mode="In" Type="String" />
+            <Parameter Name="IDBen" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spXoaXe">
+          <Parameter Name="IDXe" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetChuyenXeThucTeByIDTDuongNgayKhoiHanhGioKhoiHanh" EntitySet="CHUYENXETHUCTEs" ReturnType="Collection(QLBanVeXeKhachModel.CHUYENXETHUCTE)">
+            <Parameter Name="IDTuyenDuong" Mode="In" Type="Int32" />
+            <Parameter Name="NgayKhoiHanh" Mode="In" Type="String" />
+            <Parameter Name="SucChua" Mode="In" Type="Int32" />
+            <Parameter Name="Soluong" Mode="In" Type="Int32" />
+            <Parameter Name="GioKhoiHanh" Mode="In" Type="Time" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DatVe_KhachHang_Transaction" ReturnType="Collection(Int32)">
+            <Parameter Name="TenKhachHang" Mode="In" Type="String" />
+            <Parameter Name="SDT" Mode="In" Type="String" />
+            <Parameter Name="CMND" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="IdCXTT" Mode="In" Type="Int32" />
+            <Parameter Name="NgayKhoiHanh" Mode="In" Type="DateTime" />
+            <Parameter Name="Ngaydat" Mode="In" Type="DateTime" />
+            <Parameter Name="MaNV" Mode="In" Type="Int32" />
+            <Parameter Name="TrangthaiDatVe" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ThemCXTT_DatVe_KhachHang_Transaction" ReturnType="Collection(QLBanVeXeKhachModel.sp_ThemCXTT_DatVe_KhachHang_Transaction_Result)">
+            <Parameter Name="IDTuyenDuong" Mode="In" Type="Int32" />
+            <Parameter Name="GioKhoiHanh" Mode="In" Type="Time" />
+            <Parameter Name="NgayKhoiHanh" Mode="In" Type="DateTime" />
+            <Parameter Name="IdXe" Mode="In" Type="Int32" />
+            <Parameter Name="IdTaixe1" Mode="In" Type="Int32" />
+            <Parameter Name="IdTaixe2" Mode="In" Type="Int32" />
+            <Parameter Name="GiaVe" Mode="In" Type="Decimal" />
+            <Parameter Name="TrangThaiCXTT" Mode="In" Type="Int32" />
+            <Parameter Name="TenKhachHang" Mode="In" Type="String" />
+            <Parameter Name="SDT" Mode="In" Type="String" />
+            <Parameter Name="CMND" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Ngaydat" Mode="In" Type="DateTime" />
+            <Parameter Name="MaNV" Mode="In" Type="Int32" />
+            <Parameter Name="TrangthaiDatVe" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_LayXeTrongTheoIDBen" EntitySet="XEs" ReturnType="Collection(QLBanVeXeKhachModel.XE)">
+          <Parameter Name="IDBEN" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateChuyenXeChuaPhanCong">
+            <Parameter Name="idxe" Mode="In" Type="Int32" />
+            <Parameter Name="idtaixe1" Mode="In" Type="Int32" />
+            <Parameter Name="idtaixe2" Mode="In" Type="Int32" />
+            <Parameter Name="idChuyenXe" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetBienSoTheoIDXe" ReturnType="Collection(QLBanVeXeKhachModel.spGetBienSoTheoIDXe_Result)">
+          <Parameter Name="idXe" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetDiemKhoiHanhTheoIDTuyenDuong" ReturnType="Collection(QLBanVeXeKhachModel.spGetDiemKhoiHanhTheoIDTuyenDuong_Result)">
+          <Parameter Name="IDTuyenDuong" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetGiaVeTheoIDXe" ReturnType="Collection(QLBanVeXeKhachModel.spGetGiaVeTheoIDXe_Result)">
+          <Parameter Name="idXe" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spgetGioKHTheoNgayKH" ReturnType="Collection(QLBanVeXeKhachModel.spgetGioKHTheoNgayKH_Result)">
+          <Parameter Name="ngayKH" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spGetIDChuyenTheoIDKH" ReturnType="Collection(QLBanVeXeKhachModel.spGetIDChuyenTheoIDKH_Result)">
+          <Parameter Name="idKH" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetIDTuyenDuongTheoNgayDi" ReturnType="Collection(QLBanVeXeKhachModel.spGetIDTuyenDuongTheoNgayDi_Result)">
+          <Parameter Name="NgayDi" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spGetIDXeTheoIDTuyenDuong" ReturnType="Collection(QLBanVeXeKhachModel.spGetIDXeTheoIDTuyenDuong_Result)">
+          <Parameter Name="idtd" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetNgayDiTheoIDChuyenIDHK" ReturnType="Collection(QLBanVeXeKhachModel.spGetNgayDiTheoIDChuyenIDHK_Result)">
+            <Parameter Name="idChuyen" Mode="In" Type="Int32" />
+            <Parameter Name="idHK" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spgetSoGheTheoIDDatVe" ReturnType="Collection(QLBanVeXeKhachModel.spgetSoGheTheoIDDatVe_Result)">
+          <Parameter Name="idDV" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateTrangThaiChuyenXeDaHoanThanh">
+          <Parameter Name="idChuyenXe" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_GetTenBenCuaTuyenDuong" ReturnType="Collection(QLBanVeXeKhachModel.sp_GetTenBenCuaTuyenDuong_Result)" />
+          <FunctionImport Name="sp_GetALLChuyenXeChuaPhanCong" ReturnType="Collection(QLBanVeXeKhachModel.sp_GetALLChuyenXeChuaPhanCong_Result)" />
+          <FunctionImport Name="sp_GetAllChuyenXeDaPhanCong" ReturnType="Collection(QLBanVeXeKhachModel.sp_GetAllChuyenXeDaPhanCong_Result)" />
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="IDNhanVien" />
+          </Key>
+          <Property Name="IDNhanVien" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="privilege" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="NHANSU" Relationship="QLBanVeXeKhachModel.FK_Account_NHANSU" FromRole="Account" ToRole="NHANSU" />
+        </EntityType>
+        <EntityType Name="BEN">
+          <Key>
+            <PropertyRef Name="IDBen" />
+          </Key>
+          <Property Name="IDBen" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="TenBen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TUYENDUONGs" Relationship="QLBanVeXeKhachModel.FK_TUYENDUONG_BEN" FromRole="BEN" ToRole="TUYENDUONG" />
+          <NavigationProperty Name="TUYENDUONGs1" Relationship="QLBanVeXeKhachModel.FK_TUYENDUONG_BEN1" FromRole="BEN" ToRole="TUYENDUONG" />
+        </EntityType>
+        <EntityType Name="CHAY">
+          <Key>
+            <PropertyRef Name="IDTuyenDuong" />
+            <PropertyRef Name="IDXe" />
+          </Key>
+          <Property Name="IDTuyenDuong" Type="Int32" Nullable="false" />
+          <Property Name="IDXe" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="TUYENDUONG" Relationship="QLBanVeXeKhachModel.FK_CHAY_TUYENDUONG" FromRole="CHAY" ToRole="TUYENDUONG" />
+          <NavigationProperty Name="XE" Relationship="QLBanVeXeKhachModel.FK_CHAY_XE" FromRole="CHAY" ToRole="XE" />
+        </EntityType>
+        <EntityType Name="CHUYENXETHUCTE">
+          <Key>
+            <PropertyRef Name="IDChuyenXe" />
+          </Key>
+          <Property Name="IDChuyenXe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDTuyenDuong" Type="Int32" Nullable="false" />
+          <Property Name="GioKhoiHanh" Type="Time" Precision="7" />
+          <Property Name="NgayKhoiHanh" Type="DateTime" Precision="0" />
+          <Property Name="IDXe" Type="Int32" />
+          <Property Name="IDTaiXe1" Type="Int32" />
+          <Property Name="IDTaiXe2" Type="Int32" />
+          <Property Name="SoLuongVe" Type="Int32" />
+          <Property Name="GiaVe" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="XE" Relationship="QLBanVeXeKhachModel.FK_CHUYENXETHUCTE_XE" FromRole="CHUYENXETHUCTE" ToRole="XE" />
+          <NavigationProperty Name="DATVEs" Relationship="QLBanVeXeKhachModel.FK_DATVE_CHUYENXETHUCTE" FromRole="CHUYENXETHUCTE" ToRole="DATVE" />
+        </EntityType>
+        <EntityType Name="DATVE">
+          <Key>
+            <PropertyRef Name="IDDatVe" />
+          </Key>
+          <Property Name="IDDatVe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDKhachhang" Type="Int32" />
+          <Property Name="NgayDat" Type="DateTime" Precision="3" />
+          <Property Name="MaNV" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="NgayDi" Type="DateTime" Precision="0" />
+          <Property Name="IDChuyen" Type="Int32" />
+          <NavigationProperty Name="CHUYENXETHUCTE" Relationship="QLBanVeXeKhachModel.FK_DATVE_CHUYENXETHUCTE" FromRole="DATVE" ToRole="CHUYENXETHUCTE" />
+          <NavigationProperty Name="DATVE_SOGHE" Relationship="QLBanVeXeKhachModel.FK_DATVE_SOGHE_DATVE" FromRole="DATVE" ToRole="DATVE_SOGHE" />
+          <NavigationProperty Name="KhachHang" Relationship="QLBanVeXeKhachModel.FK_DATVE_KhachHang" FromRole="DATVE" ToRole="KhachHang" />
+        </EntityType>
+        <EntityType Name="DATVE_SOGHE">
+          <Key>
+            <PropertyRef Name="SoGhe" />
+            <PropertyRef Name="IDDatVe" />
+          </Key>
+          <Property Name="SoGhe" Type="Int32" Nullable="false" />
+          <Property Name="IDDatVe" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DATVE" Relationship="QLBanVeXeKhachModel.FK_DATVE_SOGHE_DATVE" FromRole="DATVE_SOGHE" ToRole="DATVE" />
+        </EntityType>
+        <EntityType Name="LOAIXE">
+          <Key>
+            <PropertyRef Name="MaLoai" />
+          </Key>
+          <Property Name="MaLoai" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="HangXe" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SucChua" Type="Int32" />
+          <NavigationProperty Name="XEs" Relationship="QLBanVeXeKhachModel.FK_XE_LOAIXE" FromRole="LOAIXE" ToRole="XE" />
+        </EntityType>
+        <EntityType Name="SODIENTHOAI">
+          <Key>
+            <PropertyRef Name="IDNhanVien" />
+            <PropertyRef Name="SDT" />
+          </Key>
+          <Property Name="IDNhanVien" Type="Int32" Nullable="false" />
+          <Property Name="SDT" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NHANSU" Relationship="QLBanVeXeKhachModel.FK_SODIENTHOAI_NHANSU" FromRole="SODIENTHOAI" ToRole="NHANSU" />
+        </EntityType>
+        <EntityType Name="TUYENDUONG">
+          <Key>
+            <PropertyRef Name="IDTuyenDuong" />
+          </Key>
+          <Property Name="IDTuyenDuong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiemKhoiHanh" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="DiemDen" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="BEN" Relationship="QLBanVeXeKhachModel.FK_TUYENDUONG_BEN" FromRole="TUYENDUONG" ToRole="BEN" />
+          <NavigationProperty Name="BEN1" Relationship="QLBanVeXeKhachModel.FK_TUYENDUONG_BEN1" FromRole="TUYENDUONG" ToRole="BEN" />
+          <NavigationProperty Name="CHAYs" Relationship="QLBanVeXeKhachModel.FK_CHAY_TUYENDUONG" FromRole="TUYENDUONG" ToRole="CHAY" />
+          <NavigationProperty Name="CHUYENXEs" Relationship="QLBanVeXeKhachModel.FK_CHUYENXE_TUYENDUONG" FromRole="TUYENDUONG" ToRole="CHUYENXE" />
+          <NavigationProperty Name="NHANSUs" Relationship="QLBanVeXeKhachModel.FK_NHANSU_TUYENDUONG" FromRole="TUYENDUONG" ToRole="NHANSU" />
+        </EntityType>
+        <EntityType Name="XE">
+          <Key>
+            <PropertyRef Name="IDXe" />
+          </Key>
+          <Property Name="IDXe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BienSo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="MaLoai" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IDBen" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="CHAYs" Relationship="QLBanVeXeKhachModel.FK_CHAY_XE" FromRole="XE" ToRole="CHAY" />
+          <NavigationProperty Name="CHUYENXETHUCTEs" Relationship="QLBanVeXeKhachModel.FK_CHUYENXETHUCTE_XE" FromRole="XE" ToRole="CHUYENXETHUCTE" />
+          <NavigationProperty Name="LOAIXE" Relationship="QLBanVeXeKhachModel.FK_XE_LOAIXE" FromRole="XE" ToRole="LOAIXE" />
+        </EntityType>
+        <Association Name="FK_TUYENDUONG_BEN">
+          <End Type="QLBanVeXeKhachModel.BEN" Role="BEN" Multiplicity="0..1" />
+          <End Type="QLBanVeXeKhachModel.TUYENDUONG" Role="TUYENDUONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BEN">
+              <PropertyRef Name="IDBen" />
+            </Principal>
+            <Dependent Role="TUYENDUONG">
+              <PropertyRef Name="DiemKhoiHanh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TUYENDUONG_BEN1">
+          <End Type="QLBanVeXeKhachModel.BEN" Role="BEN" Multiplicity="0..1" />
+          <End Type="QLBanVeXeKhachModel.TUYENDUONG" Role="TUYENDUONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BEN">
+              <PropertyRef Name="IDBen" />
+            </Principal>
+            <Dependent Role="TUYENDUONG">
+              <PropertyRef Name="DiemDen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHAY_TUYENDUONG">
+          <End Type="QLBanVeXeKhachModel.TUYENDUONG" Role="TUYENDUONG" Multiplicity="1" />
+          <End Type="QLBanVeXeKhachModel.CHAY" Role="CHAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUYENDUONG">
+              <PropertyRef Name="IDTuyenDuong" />
+            </Principal>
+            <Dependent Role="CHAY">
+              <PropertyRef Name="IDTuyenDuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHAY_XE">
+          <End Type="QLBanVeXeKhachModel.XE" Role="XE" Multiplicity="1" />
+          <End Type="QLBanVeXeKhachModel.CHAY" Role="CHAY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XE">
+              <PropertyRef Name="IDXe" />
+            </Principal>
+            <Dependent Role="CHAY">
+              <PropertyRef Name="IDXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHUYENXETHUCTE_XE">
+          <End Type="QLBanVeXeKhachModel.XE" Role="XE" Multiplicity="0..1" />
+          <End Type="QLBanVeXeKhachModel.CHUYENXETHUCTE" Role="CHUYENXETHUCTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="XE">
+              <PropertyRef Name="IDXe" />
+            </Principal>
+            <Dependent Role="CHUYENXETHUCTE">
+              <PropertyRef Name="IDXe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATVE_CHUYENXETHUCTE">
+          <End Type="QLBanVeXeKhachModel.CHUYENXETHUCTE" Role="CHUYENXETHUCTE" Multiplicity="0..1" />
+          <End Type="QLBanVeXeKhachModel.DATVE" Role="DATVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUYENXETHUCTE">
+              <PropertyRef Name="IDChuyenXe" />
+            </Principal>
+            <Dependent Role="DATVE">
+              <PropertyRef Name="IDChuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATVE_SOGHE_DATVE">
+          <End Type="QLBanVeXeKhachModel.DATVE" Role="DATVE" Multiplicity="1" />
+          <End Type="QLBanVeXeKhachModel.DATVE_SOGHE" Role="DATVE_SOGHE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATVE">
+              <PropertyRef Name="IDDatVe" />
+            </Principal>
+            <Dependent Role="DATVE_SOGHE">
+              <PropertyRef Name="IDDatVe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_XE_LOAIXE">
+          <End Type="QLBanVeXeKhachModel.LOAIXE" Role="LOAIXE" Multiplicity="0..1" />
+          <End Type="QLBanVeXeKhachModel.XE" Role="XE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAIXE">
+              <PropertyRef Name="MaLoai" />
+            </Principal>
+            <Dependent Role="XE">
+              <PropertyRef Name="MaLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_GetTuyenDuongByDiemKhoiHanh2_Result">
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="String" Name="TENDIEMDEN" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_LaySoGheTren1ChuyenXe_Result">
+          <Property Type="Int32" Name="SOGHE" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_LayRaCXTTVaSoLuongGhe_Result">
+          <Property Type="Int32" Name="IDChuyenXe" Nullable="false" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="Time" Name="GioKhoiHanh" Nullable="true" />
+          <Property Type="DateTime" Name="NgayKhoiHanh" Nullable="true" />
+          <Property Type="Int32" Name="IDXe" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe1" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe2" Nullable="true" />
+          <Property Type="Int32" Name="SoLuongVe" Nullable="true" />
+          <Property Type="Decimal" Name="GiaVe" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="SucChua" Nullable="true" />
+          <Property Type="Int32" Name="GheTrong" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_LayRaCXTTVaSoLuongGhe2_Result">
+          <Property Type="Int32" Name="IDChuyenXe" Nullable="false" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="Time" Name="GioKhoiHanh" Nullable="true" />
+          <Property Type="DateTime" Name="NgayKhoiHanh" Nullable="true" />
+          <Property Type="Int32" Name="IDXe" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe1" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe2" Nullable="true" />
+          <Property Type="Int32" Name="SoLuongVe" Nullable="true" />
+          <Property Type="Decimal" Name="GiaVe" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="SucChua" Nullable="true" />
+          <Property Type="Int32" Name="GheTrong" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="IDKhachHang" />
+          </Key>
+          <Property Name="IDKhachHang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenKH" Type="String" Nullable="false" MaxLength="31" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CMND" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DATVEs" Relationship="QLBanVeXeKhachModel.FK_DATVE_KhachHang" FromRole="KhachHang" ToRole="DATVE" />
+        </EntityType>
+        <Association Name="FK_DATVE_KhachHang">
+          <End Type="QLBanVeXeKhachModel.KhachHang" Role="KhachHang" Multiplicity="0..1" />
+          <End Type="QLBanVeXeKhachModel.DATVE" Role="DATVE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="IDKhachHang" />
+            </Principal>
+            <Dependent Role="DATVE">
+              <PropertyRef Name="IDKhachhang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_ThemCXTT_DatVe_KhachHang_Result">
+          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="sp_ThemCXTT_DatVe_KhachHang_Tran_Result">
+          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="sp_ThemCXTT_DatVe_KhachHang_Transaction_Result">
+          <Property Type="Int32" Name="IDDatVe" Nullable="true" />
+          <Property Type="Int32" Name="IDCXTT" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_LayIDChuyenXeVaIDDatVeVuaThem_Result">
+          <Property Type="Int32" Name="IDCHUYEN" Nullable="true" />
+          <Property Type="Int32" Name="IDDATVE" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Temp_DatVe_SoGhe">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDatVe" Type="Int32" />
+          <Property Name="IDSoGhe" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="spSearchChuyenXeWithDiem_Result">
+          <Property Type="Int32" Name="IDCHUYEN" Nullable="false" />
+          <Property Type="Time" Name="GIOKHOIHANH" Nullable="true" />
+          <Property Type="Decimal" Name="GIAVE" Nullable="true" Precision="19" />
+          <Property Type="String" Name="DIEMKHOIHANH" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DIEMDEN" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="CHUYENXE">
+          <Key>
+            <PropertyRef Name="IDChuyen" />
+          </Key>
+          <Property Name="IDChuyen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GioKhoiHanh" Type="Time" Precision="7" />
+          <Property Name="GiaVe" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IDTuyenDuong" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="TUYENDUONG" Relationship="QLBanVeXeKhachModel.FK_CHUYENXE_TUYENDUONG" FromRole="CHUYENXE" ToRole="TUYENDUONG" />
+        </EntityType>
+        <Association Name="FK_CHUYENXE_TUYENDUONG">
+          <End Type="QLBanVeXeKhachModel.TUYENDUONG" Role="TUYENDUONG" Multiplicity="0..1" />
+          <End Type="QLBanVeXeKhachModel.CHUYENXE" Role="CHUYENXE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUYENDUONG">
+              <PropertyRef Name="IDTuyenDuong" />
+            </Principal>
+            <Dependent Role="CHUYENXE">
+              <PropertyRef Name="IDTuyenDuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NHANSU">
+          <Key>
+            <PropertyRef Name="IDNhanVien" />
+          </Key>
+          <Property Name="IDNhanVien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen" Type="String" MaxLength="31" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="Cmnd" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="QueQuan" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IDTuyenDuong" Type="Int32" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="loainv" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="QLBanVeXeKhachModel.FK_Account_NHANSU" FromRole="NHANSU" ToRole="Account" />
+          <NavigationProperty Name="TUYENDUONG" Relationship="QLBanVeXeKhachModel.FK_NHANSU_TUYENDUONG" FromRole="NHANSU" ToRole="TUYENDUONG" />
+          <NavigationProperty Name="SODIENTHOAIs" Relationship="QLBanVeXeKhachModel.FK_SODIENTHOAI_NHANSU" FromRole="NHANSU" ToRole="SODIENTHOAI" />
+        </EntityType>
+        <Association Name="FK_Account_NHANSU">
+          <End Type="QLBanVeXeKhachModel.NHANSU" Role="NHANSU" Multiplicity="1" />
+          <End Type="QLBanVeXeKhachModel.Account" Role="Account" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="NHANSU">
+              <PropertyRef Name="IDNhanVien" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="IDNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NHANSU_TUYENDUONG">
+          <End Type="QLBanVeXeKhachModel.TUYENDUONG" Role="TUYENDUONG" Multiplicity="0..1" />
+          <End Type="QLBanVeXeKhachModel.NHANSU" Role="NHANSU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TUYENDUONG">
+              <PropertyRef Name="IDTuyenDuong" />
+            </Principal>
+            <Dependent Role="NHANSU">
+              <PropertyRef Name="IDTuyenDuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SODIENTHOAI_NHANSU">
+          <End Type="QLBanVeXeKhachModel.NHANSU" Role="NHANSU" Multiplicity="1" />
+          <End Type="QLBanVeXeKhachModel.SODIENTHOAI" Role="SODIENTHOAI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANSU">
+              <PropertyRef Name="IDNhanVien" />
+            </Principal>
+            <Dependent Role="SODIENTHOAI">
+              <PropertyRef Name="IDNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="FN_NS_SearchByKeyword_Result">
+          <Property Type="Int32" Name="IDNhanVien" Nullable="false" />
+          <Property Type="String" Name="HoTen" Nullable="true" MaxLength="31" />
+          <Property Type="DateTime" Name="NgaySinh" Nullable="true" Precision="10" />
+          <Property Type="String" Name="Cmnd" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="QueQuan" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="true" />
+          <Property Type="Binary" Name="image" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="loainv" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetNSByIDNhanVien_Result">
+          <Property Type="Int32" Name="IDNhanVien" Nullable="false" />
+          <Property Type="String" Name="HoTen" Nullable="true" MaxLength="31" />
+          <Property Type="DateTime" Name="NgaySinh" Nullable="true" />
+          <Property Type="String" Name="Cmnd" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="QueQuan" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="true" />
+          <Property Type="Binary" Name="image" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="loainv" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetUserByID_Result">
+          <Property Type="Int32" Name="IDNhanVien" Nullable="false" />
+          <Property Type="String" Name="username" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="privilege" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spSearchByStatus_Result">
+          <Property Type="Int32" Name="IDNhanVien" Nullable="false" />
+          <Property Type="String" Name="HoTen" Nullable="true" MaxLength="31" />
+          <Property Type="DateTime" Name="NgaySinh" Nullable="true" Precision="10" />
+          <Property Type="String" Name="Cmnd" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="QueQuan" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="true" />
+          <Property Type="Binary" Name="image" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="loainv" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spSearchNSByName_Result">
+          <Property Type="Int32" Name="IDNhanVien" Nullable="false" />
+          <Property Type="String" Name="HoTen" Nullable="true" MaxLength="31" />
+          <Property Type="DateTime" Name="NgaySinh" Nullable="true" />
+          <Property Type="String" Name="Cmnd" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="QueQuan" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="true" />
+          <Property Type="Binary" Name="image" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="loainv" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spSelect_NS_Result">
+          <Property Type="Int32" Name="IDNhanVien" Nullable="false" />
+          <Property Type="String" Name="HoTen" Nullable="true" MaxLength="31" />
+          <Property Type="DateTime" Name="NgaySinh" Nullable="true" />
+          <Property Type="String" Name="Cmnd" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="QueQuan" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="true" />
+          <Property Type="Binary" Name="image" Nullable="true" MaxLength="Max" />
+          <Property Type="Int32" Name="loainv" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetBen_Result">
+          <Property Type="String" Name="IDBen" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="TenBen" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetCXTT_Result">
+          <Property Type="Int32" Name="IDChuyenXe" Nullable="false" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="Time" Name="GioKhoiHanh" Nullable="true" />
+          <Property Type="DateTime" Name="NgayKhoiHanh" Nullable="true" />
+          <Property Type="Int32" Name="IDXe" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe1" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe2" Nullable="true" />
+          <Property Type="Int32" Name="SoLuongVe" Nullable="true" />
+          <Property Type="Decimal" Name="GiaVe" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetDiemDenTheoDiemKhoiHanh_Result">
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="String" Name="DiemKhoiHanh" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="DiemDen" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetKhachHang_Result">
+          <Property Type="Int32" Name="IDKhachHang" Nullable="false" />
+          <Property Type="String" Name="TenKH" Nullable="false" MaxLength="31" />
+          <Property Type="String" Name="SDT" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CMND" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spGetLoaiXe_Result">
+          <Property Type="String" Name="MaLoai" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="HangXe" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="SucChua" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetNgayKhoiHanhTheoIDTD_Result">
+          <Property Type="Int32" Name="IDChuyenXe" Nullable="false" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="Time" Name="GioKhoiHanh" Nullable="true" />
+          <Property Type="DateTime" Name="NgayKhoiHanh" Nullable="true" />
+          <Property Type="Int32" Name="IDXe" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe1" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe2" Nullable="true" />
+          <Property Type="Int32" Name="SoLuongVe" Nullable="true" />
+          <Property Type="Decimal" Name="GiaVe" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetTuyenDuong_Result">
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="String" Name="DiemKhoiHanh" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="DiemDen" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetXe_Result">
+          <Property Type="Int32" Name="IDXe" Nullable="false" />
+          <Property Type="String" Name="BienSo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="MaLoai" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="IDBen" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="spGetXeTheoIDBenXe_Result">
+          <Property Type="Int32" Name="IDXe" Nullable="false" />
+          <Property Type="String" Name="BienSo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="MaLoai" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="IDBen" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="spGetBienSoTheoIDXe_Result">
+          <Property Type="Int32" Name="IDXe" Nullable="false" />
+          <Property Type="String" Name="BienSo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="MaLoai" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="IDBen" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="spGetDiemKhoiHanhTheoIDTuyenDuong_Result">
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="String" Name="DiemKhoiHanh" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="DiemDen" Nullable="true" MaxLength="5" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetGiaVeTheoIDXe_Result">
+          <Property Type="Int32" Name="IDChuyenXe" Nullable="false" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="Time" Name="GioKhoiHanh" Nullable="true" />
+          <Property Type="DateTime" Name="NgayKhoiHanh" Nullable="true" />
+          <Property Type="Int32" Name="IDXe" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe1" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe2" Nullable="true" />
+          <Property Type="Int32" Name="SoLuongVe" Nullable="true" />
+          <Property Type="Decimal" Name="GiaVe" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spgetGioKHTheoNgayKH_Result">
+          <Property Type="Int32" Name="IDChuyenXe" Nullable="false" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="Time" Name="GioKhoiHanh" Nullable="true" />
+          <Property Type="DateTime" Name="NgayKhoiHanh" Nullable="true" />
+          <Property Type="Int32" Name="IDXe" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe1" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe2" Nullable="true" />
+          <Property Type="Int32" Name="SoLuongVe" Nullable="true" />
+          <Property Type="Decimal" Name="GiaVe" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetIDChuyenTheoIDKH_Result">
+          <Property Type="Int32" Name="IDDatVe" Nullable="false" />
+          <Property Type="Int32" Name="IDKhachhang" Nullable="true" />
+          <Property Type="DateTime" Name="NgayDat" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="MaNV" Nullable="true" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="NgayDi" Nullable="true" />
+          <Property Type="Int32" Name="IDChuyen" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetIDTuyenDuongTheoNgayDi_Result">
+          <Property Type="Int32" Name="IDChuyenXe" Nullable="false" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="Time" Name="GioKhoiHanh" Nullable="true" />
+          <Property Type="DateTime" Name="NgayKhoiHanh" Nullable="true" />
+          <Property Type="Int32" Name="IDXe" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe1" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe2" Nullable="true" />
+          <Property Type="Int32" Name="SoLuongVe" Nullable="true" />
+          <Property Type="Decimal" Name="GiaVe" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetIDXeTheoIDTuyenDuong_Result">
+          <Property Type="Int32" Name="IDChuyenXe" Nullable="false" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="Time" Name="GioKhoiHanh" Nullable="true" />
+          <Property Type="DateTime" Name="NgayKhoiHanh" Nullable="true" />
+          <Property Type="Int32" Name="IDXe" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe1" Nullable="true" />
+          <Property Type="Int32" Name="IDTaiXe2" Nullable="true" />
+          <Property Type="Int32" Name="SoLuongVe" Nullable="true" />
+          <Property Type="Decimal" Name="GiaVe" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spGetNgayDiTheoIDChuyenIDHK_Result">
+          <Property Type="Int32" Name="IDDatVe" Nullable="false" />
+          <Property Type="Int32" Name="IDKhachhang" Nullable="true" />
+          <Property Type="DateTime" Name="NgayDat" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="MaNV" Nullable="true" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="DateTime" Name="NgayDi" Nullable="true" />
+          <Property Type="Int32" Name="IDChuyen" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spgetSoGheTheoIDDatVe_Result">
+          <Property Type="Int32" Name="SoGhe" Nullable="false" />
+          <Property Type="Int32" Name="IDDatVe" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_GetTenBenCuaTuyenDuong_Result">
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="String" Name="TENBENDIEMKHOIHANH" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TENBENDIEMDEN" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_GetALLChuyenXeChuaPhanCong_Result">
+          <Property Type="Int32" Name="IDChuyenXe" Nullable="false" />
+          <Property Type="Int32" Name="IDTuyenDuong" Nullable="false" />
+          <Property Type="Time" Name="GioKhoiHanh" Nullable="true" />
+          <Property Type="DateTime" Name="NgayKhoiHanh" Nullable="true" />
+          <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="String" Name="TUYENDUONG" Nullable="true" MaxLength="103" />
+        </ComplexType>
+        <ComplexType Name="sp_GetAllChuyenXeDaPhanCong_Result">
+          <Property Type="Int32" Name="IDChuyenXe" Nullable="false" />
+          <Property Type="Time" Name="GioKhoiHanh" Nullable="true" />
+          <Property Type="DateTime" Name="NgayKhoiHanh" Nullable="true" />
+          <Property Type="String" Name="TrangThai" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="String" Name="BienSo" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="TENTAIXE1" Nullable="true" MaxLength="31" />
+          <Property Type="String" Name="TENTAIXE2" Nullable="true" MaxLength="31" />
+          <Property Type="String" Name="TUYENDUONG" Nullable="true" MaxLength="103" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLBanVeXeKhachModelStoreContainer" CdmEntityContainer="DbQLBanVeXeKhachContext">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="privilege" ColumnName="privilege" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BENs">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.BEN">
+              <MappingFragment StoreEntitySet="BEN">
+                <ScalarProperty Name="TenBen" ColumnName="TenBen" />
+                <ScalarProperty Name="IDBen" ColumnName="IDBen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHAYs">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.CHAY">
+              <MappingFragment StoreEntitySet="CHAY">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IDXe" ColumnName="IDXe" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHUYENXETHUCTEs">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.CHUYENXETHUCTE">
+              <MappingFragment StoreEntitySet="CHUYENXETHUCTE">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+                <ScalarProperty Name="SoLuongVe" ColumnName="SoLuongVe" />
+                <ScalarProperty Name="IDTaiXe2" ColumnName="IDTaiXe2" />
+                <ScalarProperty Name="IDTaiXe1" ColumnName="IDTaiXe1" />
+                <ScalarProperty Name="IDXe" ColumnName="IDXe" />
+                <ScalarProperty Name="NgayKhoiHanh" ColumnName="NgayKhoiHanh" />
+                <ScalarProperty Name="GioKhoiHanh" ColumnName="GioKhoiHanh" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="IDChuyenXe" ColumnName="IDChuyenXe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATVEs">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.DATVE">
+              <MappingFragment StoreEntitySet="DATVE">
+                <ScalarProperty Name="IDChuyen" ColumnName="IDChuyen" />
+                <ScalarProperty Name="NgayDi" ColumnName="NgayDi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+                <ScalarProperty Name="IDKhachhang" ColumnName="IDKhachhang" />
+                <ScalarProperty Name="IDDatVe" ColumnName="IDDatVe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATVE_SOGHE">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.DATVE_SOGHE">
+              <MappingFragment StoreEntitySet="DATVE_SOGHE">
+                <ScalarProperty Name="IDDatVe" ColumnName="IDDatVe" />
+                <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAIXEs">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.LOAIXE">
+              <MappingFragment StoreEntitySet="LOAIXE">
+                <ScalarProperty Name="SucChua" ColumnName="SucChua" />
+                <ScalarProperty Name="HangXe" ColumnName="HangXe" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SODIENTHOAIs">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.SODIENTHOAI">
+              <MappingFragment StoreEntitySet="SODIENTHOAI">
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TUYENDUONGs">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.TUYENDUONG">
+              <MappingFragment StoreEntitySet="TUYENDUONG">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DiemDen" ColumnName="DiemDen" />
+                <ScalarProperty Name="DiemKhoiHanh" ColumnName="DiemKhoiHanh" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="XEs">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.XE">
+              <MappingFragment StoreEntitySet="XE">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IDBen" ColumnName="IDBen" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="BienSo" ColumnName="BienSo" />
+                <ScalarProperty Name="IDXe" ColumnName="IDXe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_SelectAllBenXe" FunctionName="QLBanVeXeKhachModel.Store.sp_SelectAllBenXe" />
+          <FunctionImportMapping FunctionImportName="sp_GetTuyenDuongByDiemKhoiHanh2" FunctionName="QLBanVeXeKhachModel.Store.sp_GetTuyenDuongByDiemKhoiHanh2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.sp_GetTuyenDuongByDiemKhoiHanh2_Result">
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="TENDIEMDEN" ColumnName="TENDIEMDEN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_LaySoGheTren1ChuyenXe" FunctionName="QLBanVeXeKhachModel.Store.sp_LaySoGheTren1ChuyenXe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.sp_LaySoGheTren1ChuyenXe_Result">
+                <ScalarProperty Name="SOGHE" ColumnName="SOGHE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="IDKhachHang" ColumnName="IDKhachHang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_LayIDChuyenXeVaIDDatVeVuaThem" FunctionName="QLBanVeXeKhachModel.Store.sp_LayIDChuyenXeVaIDDatVeVuaThem">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.sp_LayIDChuyenXeVaIDDatVeVuaThem_Result">
+                <ScalarProperty Name="IDCHUYEN" ColumnName="IDCHUYEN" />
+                <ScalarProperty Name="IDDATVE" ColumnName="IDDATVE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Temp_DatVe_SoGhe">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.Temp_DatVe_SoGhe">
+              <MappingFragment StoreEntitySet="Temp_DatVe_SoGhe">
+                <ScalarProperty Name="IDSoGhe" ColumnName="IDSoGhe" />
+                <ScalarProperty Name="IDDatVe" ColumnName="IDDatVe" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_ThemDATVE_SOGHE_WITH_IDDATVE" FunctionName="QLBanVeXeKhachModel.Store.sp_ThemDATVE_SOGHE_WITH_IDDATVE" />
+          <FunctionImportMapping FunctionImportName="spInsertBen" FunctionName="QLBanVeXeKhachModel.Store.spInsertBen" />
+          <FunctionImportMapping FunctionImportName="spUpdateBen" FunctionName="QLBanVeXeKhachModel.Store.spUpdateBen" />
+          <FunctionImportMapping FunctionImportName="spInsertChuyenXe" FunctionName="QLBanVeXeKhachModel.Store.spInsertChuyenXe" />
+          <FunctionImportMapping FunctionImportName="spSearchChuyenXeWithDiem" FunctionName="QLBanVeXeKhachModel.Store.spSearchChuyenXeWithDiem">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spSearchChuyenXeWithDiem_Result">
+                <ScalarProperty Name="IDCHUYEN" ColumnName="IDCHUYEN" />
+                <ScalarProperty Name="GIOKHOIHANH" ColumnName="GIOKHOIHANH" />
+                <ScalarProperty Name="GIAVE" ColumnName="GIAVE" />
+                <ScalarProperty Name="DIEMKHOIHANH" ColumnName="DIEMKHOIHANH" />
+                <ScalarProperty Name="DIEMDEN" ColumnName="DIEMDEN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUpdateChuyenXe" FunctionName="QLBanVeXeKhachModel.Store.spUpdateChuyenXe" />
+          <EntitySetMapping Name="CHUYENXEs">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.CHUYENXE">
+              <MappingFragment StoreEntitySet="CHUYENXE">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+                <ScalarProperty Name="GioKhoiHanh" ColumnName="GioKhoiHanh" />
+                <ScalarProperty Name="IDChuyen" ColumnName="IDChuyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetChuyenXeByTuyenDuong" FunctionName="QLBanVeXeKhachModel.Store.sp_GetChuyenXeByTuyenDuong" />
+          <FunctionImportMapping FunctionImportName="spUpdateTuyenDuong" FunctionName="QLBanVeXeKhachModel.Store.spUpdateTuyenDuong" />
+          <FunctionImportMapping FunctionImportName="spInsertTuyenDuong" FunctionName="QLBanVeXeKhachModel.Store.spInsertTuyenDuong" />
+          <EntitySetMapping Name="NHANSUs">
+            <EntityTypeMapping TypeName="QLBanVeXeKhachModel.NHANSU">
+              <MappingFragment StoreEntitySet="NHANSU">
+                <ScalarProperty Name="loainv" ColumnName="loainv" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="QueQuan" ColumnName="QueQuan" />
+                <ScalarProperty Name="Cmnd" ColumnName="Cmnd" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="FN_NS_SearchByKeyword" FunctionName="QLBanVeXeKhachModel.Store.FN_NS_SearchByKeyword">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.FN_NS_SearchByKeyword_Result">
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="Cmnd" ColumnName="Cmnd" />
+                <ScalarProperty Name="QueQuan" ColumnName="QueQuan" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="loainv" ColumnName="loainv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDelete_NS1" FunctionName="QLBanVeXeKhachModel.Store.spDelete_NS1" />
+          <FunctionImportMapping FunctionImportName="spGetNSByIDNhanVien" FunctionName="QLBanVeXeKhachModel.Store.spGetNSByIDNhanVien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetNSByIDNhanVien_Result">
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="Cmnd" ColumnName="Cmnd" />
+                <ScalarProperty Name="QueQuan" ColumnName="QueQuan" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="loainv" ColumnName="loainv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetUserByID" FunctionName="QLBanVeXeKhachModel.Store.spGetUserByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetUserByID_Result">
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="privilege" ColumnName="privilege" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spInserts_NS" FunctionName="QLBanVeXeKhachModel.Store.spInserts_NS" />
+          <FunctionImportMapping FunctionImportName="spSearchByStatus" FunctionName="QLBanVeXeKhachModel.Store.spSearchByStatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spSearchByStatus_Result">
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="Cmnd" ColumnName="Cmnd" />
+                <ScalarProperty Name="QueQuan" ColumnName="QueQuan" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="loainv" ColumnName="loainv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSearchNSByName" FunctionName="QLBanVeXeKhachModel.Store.spSearchNSByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spSearchNSByName_Result">
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="Cmnd" ColumnName="Cmnd" />
+                <ScalarProperty Name="QueQuan" ColumnName="QueQuan" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="loainv" ColumnName="loainv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSelect_NS" FunctionName="QLBanVeXeKhachModel.Store.spSelect_NS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spSelect_NS_Result">
+                <ScalarProperty Name="IDNhanVien" ColumnName="IDNhanVien" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="Cmnd" ColumnName="Cmnd" />
+                <ScalarProperty Name="QueQuan" ColumnName="QueQuan" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="loainv" ColumnName="loainv" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUpdate_NS" FunctionName="QLBanVeXeKhachModel.Store.spUpdate_NS" />
+          <FunctionImportMapping FunctionImportName="spGetBen" FunctionName="QLBanVeXeKhachModel.Store.spGetBen">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetBen_Result">
+                <ScalarProperty Name="IDBen" ColumnName="IDBen" />
+                <ScalarProperty Name="TenBen" ColumnName="TenBen" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetCXTT" FunctionName="QLBanVeXeKhachModel.Store.spGetCXTT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetCXTT_Result">
+                <ScalarProperty Name="IDChuyenXe" ColumnName="IDChuyenXe" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="GioKhoiHanh" ColumnName="GioKhoiHanh" />
+                <ScalarProperty Name="NgayKhoiHanh" ColumnName="NgayKhoiHanh" />
+                <ScalarProperty Name="IDXe" ColumnName="IDXe" />
+                <ScalarProperty Name="IDTaiXe1" ColumnName="IDTaiXe1" />
+                <ScalarProperty Name="IDTaiXe2" ColumnName="IDTaiXe2" />
+                <ScalarProperty Name="SoLuongVe" ColumnName="SoLuongVe" />
+                <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetDiemDenTheoDiemKhoiHanh" FunctionName="QLBanVeXeKhachModel.Store.spGetDiemDenTheoDiemKhoiHanh">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetDiemDenTheoDiemKhoiHanh_Result">
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="DiemKhoiHanh" ColumnName="DiemKhoiHanh" />
+                <ScalarProperty Name="DiemDen" ColumnName="DiemDen" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetKhachHang" FunctionName="QLBanVeXeKhachModel.Store.spGetKhachHang">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetKhachHang_Result">
+                <ScalarProperty Name="IDKhachHang" ColumnName="IDKhachHang" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetLoaiXe" FunctionName="QLBanVeXeKhachModel.Store.spGetLoaiXe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetLoaiXe_Result">
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="HangXe" ColumnName="HangXe" />
+                <ScalarProperty Name="SucChua" ColumnName="SucChua" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetNgayKhoiHanhTheoIDTD" FunctionName="QLBanVeXeKhachModel.Store.spGetNgayKhoiHanhTheoIDTD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetNgayKhoiHanhTheoIDTD_Result">
+                <ScalarProperty Name="IDChuyenXe" ColumnName="IDChuyenXe" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="GioKhoiHanh" ColumnName="GioKhoiHanh" />
+                <ScalarProperty Name="NgayKhoiHanh" ColumnName="NgayKhoiHanh" />
+                <ScalarProperty Name="IDXe" ColumnName="IDXe" />
+                <ScalarProperty Name="IDTaiXe1" ColumnName="IDTaiXe1" />
+                <ScalarProperty Name="IDTaiXe2" ColumnName="IDTaiXe2" />
+                <ScalarProperty Name="SoLuongVe" ColumnName="SoLuongVe" />
+                <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetTuyenDuong" FunctionName="QLBanVeXeKhachModel.Store.spGetTuyenDuong">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetTuyenDuong_Result">
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="DiemKhoiHanh" ColumnName="DiemKhoiHanh" />
+                <ScalarProperty Name="DiemDen" ColumnName="DiemDen" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetXe" FunctionName="QLBanVeXeKhachModel.Store.spGetXe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetXe_Result">
+                <ScalarProperty Name="IDXe" ColumnName="IDXe" />
+                <ScalarProperty Name="BienSo" ColumnName="BienSo" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="IDBen" ColumnName="IDBen" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetXeTheoIDBenXe" FunctionName="QLBanVeXeKhachModel.Store.spGetXeTheoIDBenXe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetXeTheoIDBenXe_Result">
+                <ScalarProperty Name="IDXe" ColumnName="IDXe" />
+                <ScalarProperty Name="BienSo" ColumnName="BienSo" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="IDBen" ColumnName="IDBen" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spSuaXe" FunctionName="QLBanVeXeKhachModel.Store.spSuaXe" />
+          <FunctionImportMapping FunctionImportName="spThemXe" FunctionName="QLBanVeXeKhachModel.Store.spThemXe" />
+          <FunctionImportMapping FunctionImportName="spXoaXe" FunctionName="QLBanVeXeKhachModel.Store.spXoaXe" />
+          <FunctionImportMapping FunctionImportName="sp_GetChuyenXeThucTeByIDTDuongNgayKhoiHanhGioKhoiHanh" FunctionName="QLBanVeXeKhachModel.Store.sp_GetChuyenXeThucTeByIDTDuongNgayKhoiHanhGioKhoiHanh" />
+          <FunctionImportMapping FunctionImportName="sp_DatVe_KhachHang_Transaction" FunctionName="QLBanVeXeKhachModel.Store.sp_DatVe_KhachHang_Transaction" />
+          <FunctionImportMapping FunctionImportName="sp_ThemCXTT_DatVe_KhachHang_Transaction" FunctionName="QLBanVeXeKhachModel.Store.sp_ThemCXTT_DatVe_KhachHang_Transaction">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.sp_ThemCXTT_DatVe_KhachHang_Transaction_Result">
+                <ScalarProperty Name="IDDatVe" ColumnName="IDDatVe" />
+                <ScalarProperty Name="IDCXTT" ColumnName="IDCXTT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_LayXeTrongTheoIDBen" FunctionName="QLBanVeXeKhachModel.Store.sp_LayXeTrongTheoIDBen" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateChuyenXeChuaPhanCong" FunctionName="QLBanVeXeKhachModel.Store.sp_UpdateChuyenXeChuaPhanCong" />
+          <FunctionImportMapping FunctionImportName="spGetBienSoTheoIDXe" FunctionName="QLBanVeXeKhachModel.Store.spGetBienSoTheoIDXe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetBienSoTheoIDXe_Result">
+                <ScalarProperty Name="IDXe" ColumnName="IDXe" />
+                <ScalarProperty Name="BienSo" ColumnName="BienSo" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="IDBen" ColumnName="IDBen" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetDiemKhoiHanhTheoIDTuyenDuong" FunctionName="QLBanVeXeKhachModel.Store.spGetDiemKhoiHanhTheoIDTuyenDuong">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetDiemKhoiHanhTheoIDTuyenDuong_Result">
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="DiemKhoiHanh" ColumnName="DiemKhoiHanh" />
+                <ScalarProperty Name="DiemDen" ColumnName="DiemDen" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetGiaVeTheoIDXe" FunctionName="QLBanVeXeKhachModel.Store.spGetGiaVeTheoIDXe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetGiaVeTheoIDXe_Result">
+                <ScalarProperty Name="IDChuyenXe" ColumnName="IDChuyenXe" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="GioKhoiHanh" ColumnName="GioKhoiHanh" />
+                <ScalarProperty Name="NgayKhoiHanh" ColumnName="NgayKhoiHanh" />
+                <ScalarProperty Name="IDXe" ColumnName="IDXe" />
+                <ScalarProperty Name="IDTaiXe1" ColumnName="IDTaiXe1" />
+                <ScalarProperty Name="IDTaiXe2" ColumnName="IDTaiXe2" />
+                <ScalarProperty Name="SoLuongVe" ColumnName="SoLuongVe" />
+                <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spgetGioKHTheoNgayKH" FunctionName="QLBanVeXeKhachModel.Store.spgetGioKHTheoNgayKH">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spgetGioKHTheoNgayKH_Result">
+                <ScalarProperty Name="IDChuyenXe" ColumnName="IDChuyenXe" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="GioKhoiHanh" ColumnName="GioKhoiHanh" />
+                <ScalarProperty Name="NgayKhoiHanh" ColumnName="NgayKhoiHanh" />
+                <ScalarProperty Name="IDXe" ColumnName="IDXe" />
+                <ScalarProperty Name="IDTaiXe1" ColumnName="IDTaiXe1" />
+                <ScalarProperty Name="IDTaiXe2" ColumnName="IDTaiXe2" />
+                <ScalarProperty Name="SoLuongVe" ColumnName="SoLuongVe" />
+                <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetIDChuyenTheoIDKH" FunctionName="QLBanVeXeKhachModel.Store.spGetIDChuyenTheoIDKH">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetIDChuyenTheoIDKH_Result">
+                <ScalarProperty Name="IDDatVe" ColumnName="IDDatVe" />
+                <ScalarProperty Name="IDKhachhang" ColumnName="IDKhachhang" />
+                <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NgayDi" ColumnName="NgayDi" />
+                <ScalarProperty Name="IDChuyen" ColumnName="IDChuyen" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetIDTuyenDuongTheoNgayDi" FunctionName="QLBanVeXeKhachModel.Store.spGetIDTuyenDuongTheoNgayDi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetIDTuyenDuongTheoNgayDi_Result">
+                <ScalarProperty Name="IDChuyenXe" ColumnName="IDChuyenXe" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="GioKhoiHanh" ColumnName="GioKhoiHanh" />
+                <ScalarProperty Name="NgayKhoiHanh" ColumnName="NgayKhoiHanh" />
+                <ScalarProperty Name="IDXe" ColumnName="IDXe" />
+                <ScalarProperty Name="IDTaiXe1" ColumnName="IDTaiXe1" />
+                <ScalarProperty Name="IDTaiXe2" ColumnName="IDTaiXe2" />
+                <ScalarProperty Name="SoLuongVe" ColumnName="SoLuongVe" />
+                <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetIDXeTheoIDTuyenDuong" FunctionName="QLBanVeXeKhachModel.Store.spGetIDXeTheoIDTuyenDuong">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetIDXeTheoIDTuyenDuong_Result">
+                <ScalarProperty Name="IDChuyenXe" ColumnName="IDChuyenXe" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="GioKhoiHanh" ColumnName="GioKhoiHanh" />
+                <ScalarProperty Name="NgayKhoiHanh" ColumnName="NgayKhoiHanh" />
+                <ScalarProperty Name="IDXe" ColumnName="IDXe" />
+                <ScalarProperty Name="IDTaiXe1" ColumnName="IDTaiXe1" />
+                <ScalarProperty Name="IDTaiXe2" ColumnName="IDTaiXe2" />
+                <ScalarProperty Name="SoLuongVe" ColumnName="SoLuongVe" />
+                <ScalarProperty Name="GiaVe" ColumnName="GiaVe" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetNgayDiTheoIDChuyenIDHK" FunctionName="QLBanVeXeKhachModel.Store.spGetNgayDiTheoIDChuyenIDHK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spGetNgayDiTheoIDChuyenIDHK_Result">
+                <ScalarProperty Name="IDDatVe" ColumnName="IDDatVe" />
+                <ScalarProperty Name="IDKhachhang" ColumnName="IDKhachhang" />
+                <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="NgayDi" ColumnName="NgayDi" />
+                <ScalarProperty Name="IDChuyen" ColumnName="IDChuyen" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spgetSoGheTheoIDDatVe" FunctionName="QLBanVeXeKhachModel.Store.spgetSoGheTheoIDDatVe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.spgetSoGheTheoIDDatVe_Result">
+                <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
+                <ScalarProperty Name="IDDatVe" ColumnName="IDDatVe" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_UpdateTrangThaiChuyenXeDaHoanThanh" FunctionName="QLBanVeXeKhachModel.Store.sp_UpdateTrangThaiChuyenXeDaHoanThanh" />
+          <FunctionImportMapping FunctionImportName="sp_GetTenBenCuaTuyenDuong" FunctionName="QLBanVeXeKhachModel.Store.sp_GetTenBenCuaTuyenDuong">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.sp_GetTenBenCuaTuyenDuong_Result">
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="TENBENDIEMKHOIHANH" ColumnName="TENBENDIEMKHOIHANH" />
+                <ScalarProperty Name="TENBENDIEMDEN" ColumnName="TENBENDIEMDEN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetALLChuyenXeChuaPhanCong" FunctionName="QLBanVeXeKhachModel.Store.sp_GetALLChuyenXeChuaPhanCong">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.sp_GetALLChuyenXeChuaPhanCong_Result">
+                <ScalarProperty Name="IDChuyenXe" ColumnName="IDChuyenXe" />
+                <ScalarProperty Name="IDTuyenDuong" ColumnName="IDTuyenDuong" />
+                <ScalarProperty Name="GioKhoiHanh" ColumnName="GioKhoiHanh" />
+                <ScalarProperty Name="NgayKhoiHanh" ColumnName="NgayKhoiHanh" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TUYENDUONG" ColumnName="TUYENDUONG" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetAllChuyenXeDaPhanCong" FunctionName="QLBanVeXeKhachModel.Store.sp_GetAllChuyenXeDaPhanCong">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLBanVeXeKhachModel.sp_GetAllChuyenXeDaPhanCong_Result">
+                <ScalarProperty Name="IDChuyenXe" ColumnName="IDChuyenXe" />
+                <ScalarProperty Name="GioKhoiHanh" ColumnName="GioKhoiHanh" />
+                <ScalarProperty Name="NgayKhoiHanh" ColumnName="NgayKhoiHanh" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="BienSo" ColumnName="BienSo" />
+                <ScalarProperty Name="TENTAIXE1" ColumnName="TENTAIXE1" />
+                <ScalarProperty Name="TENTAIXE2" ColumnName="TENTAIXE2" />
+                <ScalarProperty Name="TUYENDUONG" ColumnName="TUYENDUONG" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
